@@ -2,7 +2,7 @@ import * as Sequelize from "sequelize";
 import db from "../config/database";
 import { Person } from "./Person";
 
-var Car = db.define('car', {
+export var Car = db.define('car', {
     brand: {
         type: Sequelize.STRING
     },
@@ -16,7 +16,5 @@ var Car = db.define('car', {
         type: Sequelize.INTEGER
     }
 });
-
 Car.belongsTo(Person);
-
-export default Car;
+Car.sync();
