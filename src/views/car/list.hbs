@@ -8,6 +8,7 @@
       <th scope="col">Model</th>
       <th scope="col">Color</th>
       <th scope="col">MaxSpeed</th>
+      <th scope="col">Owner Id</th> 
       <th></th>
     </tr>
   </thead>
@@ -21,13 +22,14 @@
         <td>{{this.maxSpeed}}</td>
         <td>{{this.personId}}</td>
         <td>
-          <a href="/persons/{{this.personId}}/cars/{{this.id}}" class="btn btn-primary" role="button">Edit</a>
+          <a href="/persons/{{this.personId}}/cars/{{this.id}}/edit" class="btn btn-primary" role="button">Edit</a>
           <a href="/persons/{{this.personId}}/cars/{{this.id}}/delete" class="btn btn-danger" role="button">Delete</a>
         </td>
     </tr>
     {{/each}}
   </tbody>
 </table>
-{{#if fromPerson}}
-<a href="/persons/{{fromPerson}}/cars/new" class="btn btn-primary" role="button">Add</a>
+{{#if concretePersonId}}
+<a href="/persons/{{concretePersonId}}/cars/new" class="btn btn-primary" role="button">Add</a>
+<a href="/persons" class="btn btn-primary" role="button">Back</a>
 {{/if}}
