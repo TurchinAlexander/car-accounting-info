@@ -1,0 +1,38 @@
+<h3>{{viewTitle}}</h3>
+
+{{#if car.id}}
+<form action="/persons/{{car.personId}}/cars/{{car.id}}/edit" method="POST" autocomplete="off">
+{{else}}
+<form action="/persons/{{personId}}/cars/new" method="POST" autocomplete="off">
+{{/if}}
+    <div>
+        <div class="form-group col-md-6">
+            <label>Brand</label>
+            <input type="text" class="form-control" name="brand" placeholder="Brand" value="{{car.brand}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Model</label>
+            <input type="text" class="form-control" name="model" placeholder="Model" value="{{car.model}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Color</label>
+            <input type="text" class="form-control" name="color" placeholder="Color" value="{{car.color}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Max Speed</label>
+            <input type="text" class="form-control" name="maxSpeed" placeholder="Max Speed" value="{{car.maxSpeed}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Owner Id</label>
+            {{#if personId}}
+            <input type="text" class="form-control" name="personId" placeholder="person Id" value="{{personId}}" readonly>
+            {{else}}
+            <input type="text" class="form-control" name="personId" placeholder="person Id" value="{{car.personId}}" readonly>
+            {{/if}}
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+        <a class="btn btn-secondary" href="/persons/{{personId}}/cars">Back</a>
+  </div>
+</form>

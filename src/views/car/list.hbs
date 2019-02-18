@@ -1,0 +1,35 @@
+<h3>Cars</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Model</th>
+      <th scope="col">Color</th>
+      <th scope="col">MaxSpeed</th>
+      <th scope="col">Owner Id</th> 
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+    <tr>
+        <th scope="row">{{this.id}}</a></th>
+        <td>{{this.brand}}</td>
+        <td>{{this.model}}</td>
+        <td>{{this.color}}</td>
+        <td>{{this.maxSpeed}}</td>
+        <td>{{this.personId}}</td>
+        <td>
+          <a href="/persons/{{this.personId}}/cars/{{this.id}}/edit" class="btn btn-primary" role="button">Edit</a>
+          <a href="/persons/{{this.personId}}/cars/{{this.id}}/delete" class="btn btn-danger" role="button">Delete</a>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{#if concretePersonId}}
+<a href="/persons/{{concretePersonId}}/cars/new" class="btn btn-primary" role="button">Add</a>
+<a href="/persons" class="btn btn-primary" role="button">Back</a>
+{{/if}}
