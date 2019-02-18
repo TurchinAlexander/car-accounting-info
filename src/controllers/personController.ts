@@ -42,7 +42,7 @@ router.get("/:id/delete", (req, res) => {
 
 router.get("/:id/cars", (req, res) => {
     Car.findAll({where: {personId: req.params.id}})
-    .then((cars) => res.render('car/list', {fromPerson:req.params.id, list: cars}))
+    .then((cars) => res.render('car/list', {concretePersonId: req.params.id, list: cars}))
     .catch(err => res.send(err));
 })
 
@@ -56,5 +56,24 @@ router.post("/:id/cars/new", (req, res) => {
     .catch(err => res.send(err));
 })
 
+router.get('/:ownerId/cars/:id/edit', (req, res) => {
+    Car.findById(req.params.id)
+    .then(car => 
+        res.render('car/newOrEdit', { car })
+    )
+    .catch(err => res.send(err));
+})
+
+router.post('/:ownerId/cars/:id/edit', (req, res) => {
+    Car.update(req.body, {where: {id: req.params.id}})
+    .then(() => res.redirect('../'))
+    .catch(err => res.send(err));
+})
+
+router.get('/:ownerId/cars/:id/delete', (req, res) => {
+    Car.destroy({where: {id: req.params.id}})
+    .then(() => res.redirect('../'))
+    .catch(err => res.send(err));
+})
 
 export default router;
