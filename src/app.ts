@@ -7,7 +7,10 @@ import CarController from "./controllers/carController";
 
 const app = express();
 
-console.log(`${__dirname}/views`);
+//Connect to database.
+db.authenticate()
+    .then(() => console.log("Successful connection"))
+    .catch(err => console.log(err));
 
 app.set('views', `${__dirname}\\views`);
 app.engine('hbs', exphbs({
@@ -21,14 +24,8 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-db.authenticate()
-    .then(() => console.log("Successful connection"))
-    .catch(err => console.log(err));
-
+//Use routeHandlers.
 app.use("/persons", PersonController);
 app.use("/cars", CarController);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-});
+export default app;
