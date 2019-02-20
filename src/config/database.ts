@@ -1,7 +1,7 @@
 import * as Sequelize from "sequelize";
 
 export default new Sequelize('test', 'root', 'password', {
-  host: 'localhost',
+  host: 'db',
   dialect: 'mysql',
   operatorsAliases: false,
 
