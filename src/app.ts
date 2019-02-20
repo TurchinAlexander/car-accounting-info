@@ -12,7 +12,7 @@ db.authenticate()
     .then(() => console.log("Successful connection"))
     .catch(err => console.log(err));
 
-app.set('views', `${__dirname}\\views`);
+app.set('views', `${__dirname}/views`);
 app.engine('hbs', exphbs({
     extname: 'hbs',
     defaultLayout: 'main',
